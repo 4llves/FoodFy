@@ -15,8 +15,8 @@ module.exports = {
         const pagination = { page: params.page };
 
         users.length == 0
-        ? pagination.total = 1
-        : pagination.total = Math.ceil(users[0].total / params.limit);
+            ? pagination.total = 1
+            : pagination.total = Math.ceil(users[0].total / params.limit);
 
         const { success } = req.session;
 
@@ -40,24 +40,22 @@ module.exports = {
             const userPassword = crypto.randomBytes(3).toString('hex');
             const welcomeEmail = `
                 <h2 style="font-size: 24px; font-weight: normal;">Olá <strong>${name}</strong>,</h2>
-                <p>Seja muito bem-vindo(a) ao <strong>Foodfy</strong> :)</p>
-                <p>Seu cadastro foi realizado com sucesso! Confira seus dados:</p>
+                <p>Seja muito bem-vindo(a) ao <strong>Foodfy</strong> 🤩</p>
+                <p>Seu cadastro foi realizado com sucesso!</p>
                 <p>Login: ${email}</p>
                 <p>Senha: ${userPassword}</p>
-                <br>
-                <h3>Como eu acesso minha Conta?</h3>
+                <br>                
                 <p>
-                    Bem simples, você só precisa clicar no botão abaixo e entrar com seu email e senha informados acima.
+                    Acesse no botão abaixo:
 				</p>
 				<p style="text-align: center;">
                     <a
                         style="display: block; margin: 32px auto; padding: 16px; width:150px; color: #fff;
                         background-color: #6558C3; text-decoration: none; border-radius: 4px;"
-                        href="http:localhost:5000/admin/users/login" target="_blank"
+                        href="http:localhost:5001/admin/users/login" target="_blank"
                     >Acessar</a> 
 				</p>
-                <p style="padding-top:16px; border-top: 2px solid #ccc">Te esperamos lá!</p>
-                <p>Equipe Foodfy.</p>
+                <p style="padding-top:16px; border-top: 2px solid #ccc">att: Equipe Foodfy.</p>                
             `;
 
             await mailer.sendMail({
@@ -89,7 +87,7 @@ module.exports = {
             user.is_admin = user.is_admin.toString();
 
             const { success } = req.session;
-            
+
             if (success) {
                 res.render('users/edit', { user, success });
                 req.session.success = '';

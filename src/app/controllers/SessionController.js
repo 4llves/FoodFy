@@ -35,22 +35,21 @@ module.exports = {
             });
 
             const email = `
-            <h2 style="font-size: 24px; font-weight: normal;">Perdeu a chave?</h2>
+            <h2 style="font-size: 24px; font-weight: normal;">Perdeu sua Senha?</h2>
             <br>
             <p>
-                Não se preocupe ${user.name}, com tantas receitas incríveis é normal esquecer a senha ;)
+                Não se preocupe ${user.name}. 🐱‍💻
                 <br><br>
-                Clique e botão abaixo e vamos recupera-lá:
+                Basta apenas clicar no botão abaixo para recupera-lá:
             </p>
             <p style="text-align: center;">
                 <a
                     style="display: block; margin: 32px auto; padding: 16px; width:150px; color: #fff;
-                    background-color: #6558C3; text-decoration: none; border-radius: 4px;"
-                    href="http:localhost:5000/admin/users/password-reset?token=${token}" target="_blank"
+                    background-color: #111; text-decoration: none; border-radius: 4px;"
+                    href="http:localhost:5001/admin/users/password-reset?token=${token}" target="_blank"
                 >Recuperar</a> 
             </p>
-            <p style="padding-top:16px; border-top: 2px solid #ccc">Te esperamos lá!</p>
-            <p>Equipe Foodfy.</p>
+            <p style="padding-top:16px; border-top: 2px solid #ccc">att: Equipe Foodfy.</p>            
             `;
 
             mailer.sendMail({
@@ -76,7 +75,7 @@ module.exports = {
     async reset(req, res) {
         const { user } = req;
         const { password, token } = req.body;
-        
+
         try {
             const newPassword = await hash(password, 8);
 
@@ -90,7 +89,7 @@ module.exports = {
                 user: req.body,
                 success: 'Senha atualizada! Faça o seu login.'
             })
-            
+
         } catch (err) {
             console.error(err);
             return res.render('session/password-reset', {
