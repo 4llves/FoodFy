@@ -1,0 +1,24 @@
+{% extends 'templates/layouts/admin.njk' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/styles/admin.css">
+    <title>Criar Receita | Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <form action="/admin/recipes" method="POST" enctype="multipart/form-data">
+            <div class="title">
+                <h2>Nova receita</h2>
+                <div>
+                    <a href="/admin/recipes" class="btn cancel">Cancelar</a>
+                    <button class="btn" type="submit" onclick="Validate.allFields(event)">Salvar receita</button>
+                </div>
+            </div>
+
+            {% include "templates/includes/recipes/recipes-fields.njk" %}
+        </form>
+    </section>
+
+    {% include "templates/includes/recipes/field-options.njk" %}
+{% endblock %}

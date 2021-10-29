@@ -1,0 +1,21 @@
+{% extends "templates/layouts/main.njk" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/styles/recipes.css">
+    <title>Receitas | Foodfy</title>
+{% endblock %}
+
+{% block search %}
+    {% include "templates/includes/recipes/search.njk" %}
+{% endblock %}
+
+{% block content %}
+    <section class="container list">
+        <div class="recipe-container">
+            {% for recipe in recipes %}
+                {% include "templates/includes/recipes/recipe-card.njk" %}
+            {% endfor %}
+        </div>
+    </section>
+    {% include "templates/includes/pagination.njk" %}
+{% endblock %}

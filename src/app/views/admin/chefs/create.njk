@@ -1,0 +1,22 @@
+{% extends 'templates/layouts/admin.njk' %}
+
+{% block head %}
+    <link rel="stylesheet" href="/styles/admin.css">
+    <title>Criar Chef | Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <form action="/admin/chefs" method="POST" enctype="multipart/form-data">
+            <div class="title">
+                <h2>Novo Chef</h2>
+                <div>
+                    <a href="/admin/chefs" class="btn cancel">Cancelar</a>
+                    <button class="btn" type="submit" onclick="Validate.allFields(event)">Salvar chef</button>
+                </div>
+            </div>
+
+            {% include "templates/includes/chefs/chefs-fields.njk" %}
+        </form>
+    </section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "templates/layouts/session.njk" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/styles/sessions.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+    <title>Login | Foodfy</title>
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block content %}
+    <section class="session container">
+        <form action="/admin/users/login" method="POST">
+            <div class="title">
+                <h2>Iniciar Sessão</h2>
+            </div>
+
+            {% include "templates/includes/sessions/login-fields.njk" %}
+
+            <div class="footer">
+                <ul>
+                    <li>
+                        <a href="/admin/users/forgot-password">Perdeu a senha?</a>
+                    </li>
+                    <li>
+                        <button onclick="Validate.allFields(event)" class="btn" type="submit">Acessar</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </section>
+{% endblock %}

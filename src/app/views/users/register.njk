@@ -1,0 +1,25 @@
+{% extends "templates/layouts/admin.njk" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/styles/admin.css">
+    <title>Criar Usuário | Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <form action="/admin/users/register" method="POST">
+            <div class="title">
+                <h2>Criar Usuário</h2>
+
+                <div>
+                    <a href="/admin/users" class="btn cancel">Cancelar</a>
+                    <button class="btn" type="submit" onclick="Validate.allFields(event)">Salvar</button>
+                </div>
+            </div>
+
+            <div class="fields">
+                {% include "templates/includes/users/fields.njk" %}
+            </div>
+        </form>
+    </section>
+{% endblock %}
